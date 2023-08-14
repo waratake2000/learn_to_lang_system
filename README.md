@@ -1,0 +1,2 @@
+# learn_to_lang_system
+言語系のモデルを勉強する用のリポジトリ
