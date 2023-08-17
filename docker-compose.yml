@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  nvidia_docker:
+    build:
+      context: .
+      shm_size: '10gb'
+    shm_size: '10gb'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    tty: true
+    restart: always
+    ports:
+      - "8502:8502"
+      - "3001:3001"
+      - "7862:7860"
+    volumes:
+      - ./:/root
+      - /home/gpudev/dataset:/root/dataset
+      - /home/gpudev/Cloud/:/root/Cloud
+      - /home/gpudev/LangModels/:/root/LangModels
+
+    working_dir: /root
+    command: ["/bin/bash"]
+
